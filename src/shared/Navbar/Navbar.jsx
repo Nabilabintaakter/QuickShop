@@ -2,6 +2,7 @@ import { FaSearch, FaShoppingCart, FaUserCircle } from "react-icons/fa";
 import { ImMenu } from "react-icons/im";
 import Container from "./Container/Container";
 import { Link } from "react-router-dom";
+import logo from "../../assets/shopping.png";
 
 const Navbar = () => {
     const links = <>
@@ -25,7 +26,10 @@ const Navbar = () => {
                                 {links}
                             </ul>
                         </div>
-                        <a className="text-xl font-bold text-black">Quick Shop</a>
+                        <div className="font-poppins flex items-center gap-3">
+                            <img className="w-6 md:w-8" src={logo} alt="" />
+                            <Link to={'/'} className=" text-xl md:text-2xl lg:text-3xl font-bold text-black">Quick Shop</Link>
+                        </div>
                     </div>
 
                     {/* Navbar Center */}
