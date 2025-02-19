@@ -8,9 +8,9 @@ const Header = () => {
         >
             <Container>
                 <div className="flex flex-col w-full">
-                    <div className="w-[85%] md:w-[75%] lg:w-[70%] mx-auto text-center">
-                        <div className="w-full bg-white bg-opacity-80 p-8 rounded-xl shadow-lg">
-                            <h1 className="text-2xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 leading-tight">
+                    <div className="w-[95%] md:w-[75%] lg:w-[70%] mx-auto text-center">
+                        <div className="w-full bg-white bg-opacity-80 px-3 py-8 rounded-xl shadow-lg">
+                            <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 leading-tight">
                                 Welcome to <span className="text-yellow-500">Quick Shop</span>
                             </h1>
                             <h2 className="mt-4 md:text-xl lg:text-2xl font-semibold text-gray-700 tracking-wide">

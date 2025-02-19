@@ -5,7 +5,7 @@ import Navbar from "../shared/Navbar/Navbar";
 const MainLayout = () => {
     return (
         <div className="font-roboto">
-            <Navbar></Navbar>
+            <div className="h-[64px]"><Navbar></Navbar></div>
             <Outlet></Outlet>
         </div>
     );
