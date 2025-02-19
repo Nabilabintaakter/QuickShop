@@ -23,7 +23,7 @@ const ProductCard = ({ product, renderStars, setSelectedProduct }) => {
                 {/* Rating System */}
                 <div className="flex items-center mt-2 space-x-1">
                     {renderStars(product?.rating?.rate || 0)}
-                    <span className="text-gray-700 font-medium ml-1">
+                    <span className="text-gray-700 font-medium ml-1 text-sm md:text-base">
                         {product?.rating?.rate?.toFixed(1)}
                     </span>
                     <span className="text-gray-500 text-xs md:text-sm ml-2">

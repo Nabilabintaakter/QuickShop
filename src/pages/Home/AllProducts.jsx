@@ -39,7 +39,7 @@ const AllProducts = () => {
                     </p>
                 </div>
 
-                {/* Product Cards Grid */}
+                {/* Products section */}
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[10px] md:gap-4">
                     {products.length > 0 ? (
                         products.map((product) => (
@@ -50,63 +50,74 @@ const AllProducts = () => {
                     )}
                     {/* Modal */}
                     {selectedProduct && (
-                        <dialog id="product_modal" className="modal" open>
-                            <div className="modal-box">
-                                {/* Modal Title */}
-                                <h3 className="text-lg font-semibold">{selectedProduct?.title}</h3>
-
-                                {/* Product Image & Details */}
-                                <div className="flex gap-4 mt-2">
-                                    <img
-                                        src={selectedProduct?.image}
-                                        alt={selectedProduct?.title}
-                                        className="w-24 h-24 object-contain border rounded-lg"
-                                    />
-                                    <div>
-                                        <p className="text-lg font-bold text-gray-900">
-                                            ${selectedProduct?.price.toFixed(2)}
-                                        </p>
-                                        <p className="text-sm text-green-500 font-medium">In Stock</p>
-                                    </div>
-                                </div>
-
-                                {/* Description */}
-                                <p className="text-gray-600 text-sm mt-2">
-                                    {selectedProduct?.description}
-                                </p>
-
-                                {/* Quantity Selector */}
-                                <div className="flex items-center gap-3 mt-4">
-                                    <button
-                                        className="btn btn-sm btn-outline"
-                                        onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                                    >
-                                        <FaMinus />
-                                    </button>
-                                    <span className="text-lg font-bold">{quantity}</span>
-                                    <button
-                                        className="btn btn-sm btn-outline"
-                                        onClick={() => setQuantity(quantity + 1)}
-                                    >
-                                        <FaPlus />
-                                    </button>
-                                </div>
-
-                                {/* Actions */}
-                                <div className="flex justify-end gap-2 mt-4">
-                                    <button
-                                        className="btn"
-                                        onClick={() => {
-                                            setSelectedProduct(null);
-                                            setQuantity(1); // Reset quantity
-                                        }}
-                                    >
-                                        Close
-                                    </button>
-                                    <button className="btn bg-black text-white">Buy Now</button>
-                                </div>
-                            </div>
-                        </dialog>
+                       <dialog id="product_modal" className="modal modal-open">
+                       <div className="modal-box w-[90%] max-w-xl rounded-2xl p-6 bg-white shadow-lg">
+                           {/* Modal Content */}
+                           <div className="flex flex-col md:flex-row items-center gap-6">
+                               {/* Left: Image */}
+                               <img
+                                   src={selectedProduct.image}
+                                   alt={selectedProduct.title}
+                                   className="w-40 h-40 object-contain rounded-xl"
+                               />
+           
+                               {/* Right: Details */}
+                               <div className="flex-1">
+                                   {/* Title */}
+                                   <h3 className="text-xl font-semibold text-gray-900">{selectedProduct.title}</h3>
+           
+                                   {/* Rating + Stock */}
+                                   <div className="flex items-center gap-2 mt-1">
+                                       <span className="flex text-yellow-500">
+                                           {[...Array(5)].map((_, i) => (
+                                               <FaStar key={i} className="text-lg" />
+                                           ))}
+                                       </span>
+                                       <span className="text-gray-500 text-sm">({selectedProduct.rating.count} Reviews)</span>
+                                       <span className="text-green-600 text-sm font-medium ml-2"> | In Stock</span>
+                                   </div>
+           
+                                   {/* Price */}
+                                   <p className="text-2xl font-bold text-gray-800 mt-2">${selectedProduct.price.toFixed(2)}</p>
+           
+                                   {/* Description */}
+                                   <p className="text-gray-600 text-sm mt-2 ">
+                                       {selectedProduct.description}
+                                   </p>
+           
+                                   {/* Quantity Selector */}
+                                   <div className="flex items-center gap-4 mt-4">
+                                       <button
+                                           className="w-10 h-10 flex items-center justify-center rounded-md border border-gray-300 text-gray-700 hover:bg-gray-200"
+                                           onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                                       >
+                                           <FaMinus />
+                                       </button>
+                                       <span className="text-lg font-bold">{quantity}</span>
+                                       <button
+                                           className="w-10 h-10 flex items-center justify-center rounded-md border border-gray-300 text-gray-700 hover:bg-gray-200"
+                                           onClick={() => setQuantity(quantity + 1)}
+                                       >
+                                           <FaPlus />
+                                       </button>
+                                   </div>
+           
+                                   {/* Buttons */}
+                                   <div className="mt-6 flex gap-4">
+                                       <button
+                                           className="px-6 py-2 rounded-md bg-gray-200 hover:bg-gray-300 text-gray-800"
+                                           onClick={() => setSelectedProduct(null)}
+                                       >
+                                           Close
+                                       </button>
+                                       <button className="px-6 py-2 rounded-md bg-black text-white hover:bg-gray-900">
+                                           Buy Now
+                                       </button>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                   </dialog>
                     )}
                 </div>
             </Container>
