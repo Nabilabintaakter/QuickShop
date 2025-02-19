@@ -2,7 +2,8 @@ import { FaSearch, FaShoppingCart, FaUserCircle } from "react-icons/fa";
 import { ImMenu } from "react-icons/im";
 import Container from "./Container/Container";
 import { Link } from "react-router-dom";
-import logo from "../../assets/shopping.png";
+import logo from "../../assets/shopping-cart.png";
+import logoText from "../../assets/LOgo_text-2.png";
 
 const Navbar = () => {
     const links = <>
@@ -27,9 +28,9 @@ const Navbar = () => {
                                     {links}
                                 </ul>
                             </div>
-                            <div className="font-poppins flex items-center gap-3">
+                            <div className=" flex items-center gap-3">
                                 <img className="w-6 md:w-8" src={logo} alt="" />
-                                <Link to={'/'} className=" text-xl md:text-2xl lg:text-3xl font-bold text-black">Quick Shop</Link>
+                                <Link to={'/'} className="font-outfit text-xl md:text-2xl lg:text-3xl font-bold text-black"><img className="w-28 mt-1" src={logoText} alt="" /></Link>
                             </div>
                         </div>
 

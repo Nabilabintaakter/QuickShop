@@ -4,7 +4,7 @@ const Header = () => {
     return (
         <section
             className="flex min-h-[70vh] md:min-h-[65vh] lg:h-[70vh] w-full justify-center items-center bg-cover bg-center bg-no-repeat"
-            style={{ backgroundImage: "url('/Colored Shapes.svg')" }}
+            style={{ backgroundImage: "url('/Rect Light.svg')" }}
         >
             <Container>
                 <div className="flex flex-col w-full">
