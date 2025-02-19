@@ -1,3 +1,4 @@
+import AllProducts from "./AllProducts";
 import Header from "./Header";
 import HighlightSection from "./HighlightSection";
 
@@ -7,6 +8,7 @@ const Home = () => {
         <div>
             <Header></Header>
             <HighlightSection></HighlightSection>
+            <AllProducts></AllProducts>
         </div>
     );
 };
