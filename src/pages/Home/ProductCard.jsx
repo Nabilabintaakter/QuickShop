@@ -30,17 +30,6 @@ const ProductCard = ({ product, renderStars, setSelectedProduct }) => {
                         ({product?.rating?.count} Reviews)
                     </span>
                 </div>
-
-                {/* Add to Cart Button */}
-                <button
-                    onClick={(e) => {
-                        e.stopPropagation();
-                        setSelectedProduct(product);
-                    }}
-                    className="mt-4 btn w-full bg-black border text-white font-semibold py-2 rounded-sm hover:bg-white hover:text-black hover:border-black transition-all duration-500"
-                >
-                    Add To Cart
-                </button>
             </div>
         </>
     );
