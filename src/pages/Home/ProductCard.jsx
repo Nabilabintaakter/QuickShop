@@ -3,7 +3,6 @@
 const ProductCard = ({ product, renderStars, setSelectedProduct }) => {
     return (
         <>
-            {/* Product Card */}
             <div
                 className="bg-white rounded-sm p-3 md:p-4 hover:shadow-2xl transition cursor-pointer"
                 onClick={() => setSelectedProduct(product)}
