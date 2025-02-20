@@ -1,7 +1,7 @@
-# Quick Shop
+# **Quick Shop -  A Modern E-Commerce Experience**
+<img src="https://i.ibb.co.com/gMZjxW2g/quickshop.jpg" alt="Home Page Screenshot" width="100%" />
 
-## 🚀 Overview
-Quick Shop is a modern, dynamic e-commerce platform built with **React**. It allows users to browse products by category, view detailed product information, and add items to their cart with real-time updates and notifications.
+**Quick Shop** is a modern, dynamic e-commerce platform built with **React**. It allows users to browse products by category, view detailed product information, and add items to their cart with real-time updates and notifications. Designed for a seamless shopping experience, **Quick Shop** makes it easy for users to shop online, explore various product categories, and manage their cart all within a smooth and responsive interface.
 
 ## 🎯 Features
 - ✅ **Category-Based Filtering** – Browse products by selecting different categories.
