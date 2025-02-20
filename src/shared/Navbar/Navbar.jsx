@@ -72,8 +72,8 @@ const Navbar = () => {
                                 </ul>
                             </div>
                             <div className="flex items-center gap-2">
-                                <img className="w-7 md:w-8" src={logo} alt="" />
-                                <Link to={'/'}><img className="w-28 mt-1" src={logoText} alt="" /></Link>
+                                <img className="w-7 md:w-8 lg:w-10" src={logo} alt="" />
+                                <Link to={'/'}><img className="w-28 lg:w-32 mt-1" src={logoText} alt="" /></Link>
                             </div>
                         </div>
 
