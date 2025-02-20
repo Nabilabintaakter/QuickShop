@@ -22,8 +22,8 @@
 
 ### 1️⃣ Clone the Repository
 ```bash
-git clone https://github.com/Nabilabintaakter/SkillHorizon.git
-cd SkillHorizon
+git clone https://github.com/Nabilabintaakter/QuickShop.git
+cd QuickShop
 ```
 ### 2️⃣ Install Dependencies
 ```bash
