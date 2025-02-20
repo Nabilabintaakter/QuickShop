@@ -5,6 +5,7 @@ import ProductCard from "./ProductCard";
 import { useCart } from "../../provider/CartProvider";
 import { useCategory } from "../../provider/CategoryProvider";
 import { MdPlayArrow } from "react-icons/md";
+import toast from "react-hot-toast";
 
 const AllProducts = () => {
     const [products, setProducts] = useState([]);
@@ -14,7 +15,13 @@ const AllProducts = () => {
     const handleViewAll = () => {
         setSelectedCategory("");
     };
-
+    const handleAddToCart = () => {
+        addToCart(selectedProduct); 
+        toast.success(`${selectedProduct.title} has been added to your cart!`, {
+            position: "top-right",
+            duration: 3000, 
+        });
+    };
     useEffect(() => {
         const url = selectedCategory
             ? `https://fakestoreapi.com/products/category/${selectedCategory}`
@@ -122,7 +129,7 @@ const AllProducts = () => {
                                             >
                                                 Cancel
                                             </button>
-                                            <button onClick={addToCart} className="px-6 py-2 rounded-md bg-black text-white hover:bg-gray-900">
+                                            <button onClick={handleAddToCart} className="px-6 py-2 rounded-md bg-black text-white hover:bg-gray-900">
                                                 Add To Cart
                                             </button>
                                         </div>
