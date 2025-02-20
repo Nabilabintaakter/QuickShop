@@ -3,11 +3,28 @@ import { FaStar, FaRegStar } from "react-icons/fa";
 import Container from "../../shared/Navbar/Container/Container";
 import ProductCard from "./ProductCard";
 import { useCart } from "../../provider/CartProvider";
+import { useCategory } from "../../provider/CategoryProvider";
+import { MdPlayArrow } from "react-icons/md";
 
 const AllProducts = () => {
     const [products, setProducts] = useState([]);
+    const { selectedCategory, setSelectedCategory } = useCategory();
     const [selectedProduct, setSelectedProduct] = useState(null);
     const { addToCart } = useCart();
+    const handleViewAll = () => {
+        setSelectedCategory("");
+    };
+
+    useEffect(() => {
+        const url = selectedCategory
+            ? `https://fakestoreapi.com/products/category/${selectedCategory}`
+            : "https://fakestoreapi.com/products";
+
+        fetch(url)
+            .then(res => res.json())
+            .then(data => setProducts(data))
+            .catch(err => console.error("Error fetching products:", err));
+    }, [selectedCategory]);
     useEffect(() => {
         fetch("https://fakestoreapi.com/products")
             .then(res => res.json())
@@ -28,10 +45,10 @@ const AllProducts = () => {
     };
 
     return (
-        <section className="py-16 bg-gray-100">
+        <section className="py-8 md:py-16 bg-gray-100">
             <Container>
                 {/* Section Title */}
-                <div className="text-center mb-12">
+                <div className="text-center mb-6">
                     <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 tracking-wide">
                         <span className="text-yellow-500">Our Products</span>
                     </h2>
@@ -39,7 +56,15 @@ const AllProducts = () => {
                         Explore our handpicked collection, offering top-quality products at unbeatable prices.
                     </p>
                 </div>
+                <div className="mb-4">
+                    <button
+                        onClick={handleViewAll}
+                        className="px-5 py-2 md:px-8 md:py-3 bg-white text-gray-900 text-sm md:text-base rounded-md shadow-md hover:bg-gray-100 transition-all duration-200 ease-in-out focus:outline-none flex items-center gap-1"
+                    >
+                        View All <MdPlayArrow className="text-xl" />
+                    </button>
 
+                </div>
                 {/* Products section */}
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-[10px]">
                     {products.length > 0 ? (

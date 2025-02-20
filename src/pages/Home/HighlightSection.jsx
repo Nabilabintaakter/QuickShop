@@ -1,5 +1,6 @@
 import Container from "../../shared/Navbar/Container/Container";
 import shop from "../../assets/shop.avif";
+import { Link } from "react-router-dom";
 
 const HighlightSection = () => {
     return (
@@ -16,12 +17,12 @@ const HighlightSection = () => {
                             Enjoy seamless shopping with quality you can trust.
                         </p>
                         <div className=" flex gap-2 md:gap-3 justify-center lg:justify-start">
-                            <button className="mt-6 px-5 py-2 md:px-8 md:py-3 bg-yellow-500 text-white text-sm md:text-base rounded-full shadow-md hover:bg-yellow-600 transition-all duration-200 ease-in-out focus:outline-none">
+                            <Link to="/#products" className="mt-6 px-5 py-2 md:px-8 md:py-3 bg-yellow-500 text-white text-sm md:text-base rounded-full shadow-md hover:bg-yellow-600 transition-all duration-200 ease-in-out focus:outline-none">
                                 Shop Now!
-                            </button>
-                            <button className="border border-gray-700 bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold mt-6 px-5 py-2 md:px-8 md:py-3 text-sm md:text-base rounded-full shadow-md transition-all">
+                            </Link>
+                            <Link to="/#products" className="border border-gray-700 bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold mt-6 px-5 py-2 md:px-8 md:py-3 text-sm md:text-base rounded-full shadow-md transition-all">
                                 Explore More
-                            </button>
+                            </Link>
                         </div>
                     </div>
 

@@ -8,6 +8,7 @@ import {
 import MainLayout from './layout/MainLayout';
 import Home from './pages/Home/Home';
 import { CartProvider } from './provider/CartProvider';
+import { CategoryProvider } from './provider/CategoryProvider';
 
 const router = createBrowserRouter([
   {
@@ -24,8 +25,10 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <CartProvider>
-      <RouterProvider router={router} />
-    </CartProvider>
+    <CategoryProvider>
+      <CartProvider>
+        <RouterProvider router={router} />
+      </CartProvider>
+    </CategoryProvider>
   </StrictMode>,
 )
