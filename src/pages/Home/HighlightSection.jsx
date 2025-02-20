@@ -3,7 +3,7 @@ import shop from "../../assets/shop.avif";
 
 const HighlightSection = () => {
     return (
-        <section className="bg-[#141b46] py-12">
+        <section className="bg-gray-900 py-12">
             <Container>
                 <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
                     {/* text */}

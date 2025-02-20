@@ -28,9 +28,9 @@ const Navbar = () => {
                                     {links}
                                 </ul>
                             </div>
-                            <div className=" flex items-center gap-3">
-                                <img className="w-6 md:w-8" src={logo} alt="" />
-                                <Link to={'/'} className="font-outfit text-xl md:text-2xl lg:text-3xl font-bold text-black"><img className="w-28 mt-1" src={logoText} alt="" /></Link>
+                            <div className=" flex items-center gap-2">
+                                <img className="w-7 md:w-8" src={logo} alt="" />
+                                <Link to={'/'}><img className="w-28 mt-1" src={logoText} alt="" /></Link>
                             </div>
                         </div>
 
