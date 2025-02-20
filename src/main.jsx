@@ -9,11 +9,13 @@ import MainLayout from './layout/MainLayout';
 import Home from './pages/Home/Home';
 import { CartProvider } from './provider/CartProvider';
 import { CategoryProvider } from './provider/CategoryProvider';
+import ErrorPage from './components/ErrorPage/ErrorPage';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: '/',

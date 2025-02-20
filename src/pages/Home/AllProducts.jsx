@@ -26,18 +26,18 @@ const AllProducts = () => {
         const url = selectedCategory
             ? `https://fakestoreapi.com/products/category/${selectedCategory}`
             : "https://fakestoreapi.com/products";
-
+    
         fetch(url)
-            .then(res => res.json())
+            .then(res => {
+                if (!res.ok) {
+                    throw new Error("Failed to fetch products");
+                }
+                return res.json();
+            })
             .then(data => setProducts(data))
-            .catch(err => console.error("Error fetching products:", err));
+            .catch(err => toast.error(`Error fetching products: ${err.message}`));
     }, [selectedCategory]);
-    useEffect(() => {
-        fetch("https://fakestoreapi.com/products")
-            .then(res => res.json())
-            .then(data => setProducts(data))
-            .catch(error => console.error("Error fetching products:", error));
-    }, []);
+    
 
     // Function to generate star rating
     const renderStars = (rating) => {

@@ -8,6 +8,7 @@ import logoText from "../../assets/LOgo_text-2.png";
 import { useCart } from "../../provider/CartProvider";
 import { useState, useEffect } from "react";
 import { useCategory } from "../../provider/CategoryProvider";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
     const { cartCount } = useCart();
@@ -43,8 +44,9 @@ const Navbar = () => {
         fetch("https://fakestoreapi.com/products/categories")
             .then(res => res.json())
             .then(data => setCategories(data))
-            .catch(err => console.error("Error fetching categories:", err));
+            .catch(err => toast.error(`Error fetching categories: ${err.message}`));
     }, []);
+    
 
 
 
@@ -71,7 +73,7 @@ const Navbar = () => {
                                     {links}
                                 </ul>
                             </div>
-                            <div className="flex items-center gap-2">
+                            <div onClick={scrollToTop} className="flex items-center gap-2">
                                 <img className="w-7 md:w-8 lg:w-10" src={logo} alt="" />
                                 <Link to={'/'}><img className="w-28 lg:w-32 mt-1" src={logoText} alt="" /></Link>
                             </div>
