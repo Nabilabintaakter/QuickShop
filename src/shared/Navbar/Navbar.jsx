@@ -4,8 +4,10 @@ import Container from "./Container/Container";
 import { Link } from "react-router-dom";
 import logo from "../../assets/shopping-cart.png";
 import logoText from "../../assets/LOgo_text-2.png";
+import { useCart } from "../../provider/CartProvider";
 
 const Navbar = () => {
+    const { cartCount } = useCart();
     const links = <>
         <li><Link to={'/'}>Home Page</Link></li>
         <li><a href="#">Categories</a></li>
@@ -52,11 +54,13 @@ const Navbar = () => {
                             </div>
                             <FaSearch className="block md:hidden text-gray-900 cursor-pointer" />
                             {/* Cart Icon */}
-                            <div className="relative cursor-pointer">
-                                <FaShoppingCart className="text-black text-xl" />
-                                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-1 rounded-full">
-                                    0
-                                </span>
+                            <div className="relative">
+                                <FaShoppingCart size={24} />
+                                
+                                    <span className="absolute -top-[10px] -right-[10px] bg-red-500 text-white text-xs px-[6px] py-[2px] rounded-full">
+                                        {cartCount}
+                                    </span>
+                                
                             </div>
 
                             {/* User Icon */}

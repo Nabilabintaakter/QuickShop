@@ -5,7 +5,7 @@ const ProductCard = ({ product, renderStars, setSelectedProduct }) => {
         <>
             {/* Product Card */}
             <div
-                className="bg-white rounded-sm p-3 md:p-4 hover:shadow-xl transition cursor-pointer"
+                className="bg-white rounded-sm p-3 md:p-4 hover:shadow-2xl transition cursor-pointer"
                 onClick={() => setSelectedProduct(product)}
             >
                 <img

@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
-import { FaStar, FaRegStar, FaPlus, FaMinus } from "react-icons/fa";
+import { FaStar, FaRegStar } from "react-icons/fa";
 import Container from "../../shared/Navbar/Container/Container";
 import ProductCard from "./ProductCard";
+import { useCart } from "../../provider/CartProvider";
 
 const AllProducts = () => {
     const [products, setProducts] = useState([]);
     const [selectedProduct, setSelectedProduct] = useState(null);
-    const [quantity, setQuantity] = useState(1);
+    const { addToCart } = useCart();
     useEffect(() => {
         fetch("https://fakestoreapi.com/products")
             .then(res => res.json())
@@ -40,7 +41,7 @@ const AllProducts = () => {
                 </div>
 
                 {/* Products section */}
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[10px] md:gap-4">
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-[10px]">
                     {products.length > 0 ? (
                         products.map((product) => (
                             <ProductCard key={product?.id} renderStars={renderStars} product={product} setSelectedProduct={setSelectedProduct}></ProductCard>
@@ -50,74 +51,60 @@ const AllProducts = () => {
                     )}
                     {/* Modal */}
                     {selectedProduct && (
-                       <dialog id="product_modal" className="modal modal-open">
-                       <div className="modal-box w-[90%] max-w-xl rounded-2xl p-6 bg-white shadow-lg">
-                           {/* Modal Content */}
-                           <div className="flex flex-col md:flex-row items-center gap-6">
-                               {/* Left: Image */}
-                               <img
-                                   src={selectedProduct.image}
-                                   alt={selectedProduct.title}
-                                   className="w-40 h-40 object-contain rounded-xl"
-                               />
-           
-                               {/* Right: Details */}
-                               <div className="flex-1">
-                                   {/* Title */}
-                                   <h3 className="text-xl font-semibold text-gray-900">{selectedProduct.title}</h3>
-           
-                                   {/* Rating + Stock */}
-                                   <div className="flex items-center gap-2 mt-1">
-                                       <span className="flex text-yellow-500">
-                                           {[...Array(5)].map((_, i) => (
-                                               <FaStar key={i} className="text-lg" />
-                                           ))}
-                                       </span>
-                                       <span className="text-gray-500 text-sm">({selectedProduct.rating.count} Reviews)</span>
-                                       <span className="text-green-600 text-sm font-medium ml-2"> | In Stock</span>
-                                   </div>
-           
-                                   {/* Price */}
-                                   <p className="text-2xl font-bold text-gray-800 mt-2">${selectedProduct.price.toFixed(2)}</p>
-           
-                                   {/* Description */}
-                                   <p className="text-gray-600 text-sm mt-2 ">
-                                       {selectedProduct.description}
-                                   </p>
-           
-                                   {/* Quantity Selector */}
-                                   <div className="flex items-center gap-4 mt-4">
-                                       <button
-                                           className="w-10 h-10 flex items-center justify-center rounded-md border border-gray-300 text-gray-700 hover:bg-gray-200"
-                                           onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                                       >
-                                           <FaMinus />
-                                       </button>
-                                       <span className="text-lg font-bold">{quantity}</span>
-                                       <button
-                                           className="w-10 h-10 flex items-center justify-center rounded-md border border-gray-300 text-gray-700 hover:bg-gray-200"
-                                           onClick={() => setQuantity(quantity + 1)}
-                                       >
-                                           <FaPlus />
-                                       </button>
-                                   </div>
-           
-                                   {/* Buttons */}
-                                   <div className="mt-6 flex gap-4">
-                                       <button
-                                           className="px-6 py-2 rounded-md bg-gray-200 hover:bg-gray-300 text-gray-800"
-                                           onClick={() => setSelectedProduct(null)}
-                                       >
-                                           Close
-                                       </button>
-                                       <button className="px-6 py-2 rounded-md bg-black text-white hover:bg-gray-900">
-                                           Buy Now
-                                       </button>
-                                   </div>
-                               </div>
-                           </div>
-                       </div>
-                   </dialog>
+                        <dialog id="product_modal" className="modal modal-open">
+                            <div className="modal-box w-[90%] max-w-3xl rounded-2xl p-6 bg-white shadow-lg">
+                                {/* Modal Content */}
+                                <div className="flex flex-col md:flex-row items-center gap-6">
+                                    {/* Left: Image */}
+                                    <img
+                                        src={selectedProduct.image}
+                                        alt={selectedProduct.title}
+                                        className="w-52 lg:w-72 lg:h-72 h-52 object-contain rounded-xl"
+                                    />
+
+                                    {/* Right: Details */}
+                                    <div className="flex-1">
+                                        {/* Title */}
+                                        <h3 className="text-xl font-semibold text-gray-900">{selectedProduct.title}</h3>
+
+                                        {/* Rating + Stock */}
+                                        <div className="flex items-center gap-2 mt-3">
+                                            <div className="flex items-center space-x-1">
+                                                {renderStars(selectedProduct?.rating?.rate || 0)}
+                                                <span className="text-gray-700 font-medium ml-1 text-sm md:text-base">
+                                                    {selectedProduct?.rating?.rate?.toFixed(1)}
+                                                </span>
+                                                <span className="text-gray-500 text-xs md:text-sm ml-2">
+                                                    ({selectedProduct?.rating?.count} Reviews)
+                                                </span>
+                                            </div>
+                                            <span className="text-green-600 text-sm font-medium ml-2"> | In Stock</span>
+                                        </div>
+
+                                        {/* Price */}
+                                        <p className="text-2xl font-bold text-gray-800 mt-2">${selectedProduct.price.toFixed(2)}</p>
+
+                                        {/* Description */}
+                                        <p className="text-gray-600 text-sm mt-2 ">
+                                            {selectedProduct.description}
+                                        </p>
+
+                                        {/* Buttons */}
+                                        <div className="mt-6 flex gap-4">
+                                            <button
+                                                className="px-6 py-2 rounded-md bg-gray-200 hover:bg-gray-300 text-gray-800"
+                                                onClick={() => setSelectedProduct(null)}
+                                            >
+                                                Cancel
+                                            </button>
+                                            <button onClick={addToCart} className="px-6 py-2 rounded-md bg-black text-white hover:bg-gray-900">
+                                                Add To Cart
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </dialog>
                     )}
                 </div>
             </Container>
